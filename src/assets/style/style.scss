@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./variables.scss";
+
+body,
+html {
+  margin: 0;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+* {
+  font-family: ravi;
+
+  @media only screen and (min-width: 1300px) {
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #ebebeb;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #9c9c9c;
+    }
+  }
+}
+
+// ---  Fade transition ---
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// --- Bounce transition ---
+.bounce-enter-active {
+  animation: bounce-in 0.3s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.3s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@layer components {
+  .btn {
+    border-radius: 16px !important;
+    letter-spacing: 0 !important;
+    box-shadow: none !important;
+    font-size: 16px !important;
+
+    .v-icon {
+      --v-icon-size-multiplier: 1.4 !important;
+    }
+
+    &-shadow {
+      box-shadow: 0 16px 32px 1px #0bcf7d30 !important;
+    }
+  }
+}
+
+@layer utilities {
+  // Icons
+  .primary-icon {
+    path {
+      stroke: $primary;
+    }
+  }
+  .fill-white {
+    path {
+      fill: #fff;
+    }
+  }
+}
+
+// Input style
+.v-field {
+  border-radius: 16px !important;
+  font-family: ravi;
+  input {
+    font-family: ravi;
+  }
+}
+.v-field__outline:not(.text-primary) {
+  .v-field__outline__start,
+  .v-field__outline__end,
+  .v-field__outline__notch::before,
+  .v-field__outline__notch::after {
+    border-color: #d2d2d2 !important;
+  }
+}
+
+// #nprogress .bar {
+//   background: #b4a25d !important;
+// }
+// #nprogress .peg {
+//   box-shadow: 0 0 10px #b4a25d, 0 0 5px #b4a25d !important;
+// }
+// #nprogress .spinner-icon {
+//   border-top-color: #b4a25d !important;
+//   border-left-color: #b4a25d !important;
+// }
+
+// input in responsive
+$focus-ring-color: rgba(59, 130, 246, 0.18);
+$focus-ring-border: rgba(59, 130, 246, 0.6);
+
+@media (pointer: coarse), (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus,
+  button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: black !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  // اگر از Vuetify یا کامپوننت‌هایی با کلاس‌های focused استفاده می‌کنی
+  // (نام کلاس را اگر دقیق می‌دانی جایگزین کن)
+  .v-input--is-focused,
+  .v-text-field--is-focused,
+  .v-select--is-focused {
+    box-shadow: none !important;
+    border-color: transparent !important;
+  }
+}
+
+// --- 2) اما دسترسی keyboard رو حفظ کنیم: نمایش ring فقط برای focus-visible ---
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px $focus-ring-color;
+  border-color: $focus-ring-border;
+  border-radius: 6px;
+}
+
+/* اگر مرورگری قدیمی ندارید که :focus-visible پشتیبانی نکند، می‌توانید
+   یک polyfill یا کتابخانه استفاده کنید؛ اما اکثر مرورگرهای مدرن از آن پشتیبانی می‌کنند. */

@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: ravi;
+  src: url("@/assets/fonts/RaviFaNum-Regular.woff2");
+  font-weight: 400;
+}
+@font-face {
+  font-family: ravi;
+  src: url("@/assets/fonts/RaviFaNum-SemiBold.woff2");
+  font-weight: 600;
+}
+@font-face {
+  font-family: ravi;
+  src: url("@/assets/fonts/RaviFaNum-Bold.woff2");
+  font-weight: 700;
+}
+@font-face {
+  font-family: ravi;
+  src: url("@/assets/fonts/RaviFaNum-Black.woff2");
+  font-weight: 800;
+}
+@font-face {
+  font-family: ravi;
+  src: url("@/assets/fonts/RaviFaNum-ExtraBlack.woff2");
+  font-weight: 900;
+}
+
+* {
+  font-family: ravi;
+  direction: rtl;
+}
+
+/* toastification */
+.toast-success {
+  background: #0d9488 !important;
+  color: #fff !important;
+  border-radius: 0.5rem !important;
+  font-weight: 600;
+}
+
+.toast-error {
+  background: #e11d48 !important;
+  color: #fff !important;
+  border-radius: 0.5rem !important;
+  font-weight: 600;
+}
